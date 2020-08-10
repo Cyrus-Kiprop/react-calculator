@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "./calculator-96.png";
-import "./App.css";
+import React from 'react';
+import logo from './calculator-96.png';
+import './App.css';
 
 function App() {
   return (
