@@ -18,11 +18,12 @@ export default class ButtonPanel extends React.Component {
           return group[key].map((btnName) => {
             return (
               <Button
-                color={['#F5913E','#EOEOEO']}
+                color={['#F5913E', '#EOEOEO']}
                 wide={171}
-                key={btnName} btnName={btnName}
-                />
-            )
+                key={btnName}
+                btnName={btnName}
+              />
+            );
           });
         })}
       </div>

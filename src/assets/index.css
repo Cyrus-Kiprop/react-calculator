@@ -9,7 +9,7 @@
 }
 
 .result {
-  background-color:#858693;
+  background-color: #858693;
   height: 100px;
   color: #ffff;
   font-weight: bolder;
@@ -27,8 +27,8 @@
 
 .calculator-board > .calc-btn {
   height: 100px;
-  background-color: #E0E0E0;
-  border: 2px solid #CECECE;
+  background-color: #e0e0e0;
+  border: 2px solid #cecece;
   display: flex;
   align-items: center;
   justify-content: center;
