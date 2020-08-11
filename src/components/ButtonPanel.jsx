@@ -1,27 +1,25 @@
 import React from 'react';
 
+// eslint-disable-next-line import/extensions
 import Button from './Button.jsx';
 
 export default class ButtonPanel extends React.Component {
-  render () {
+  render() {
     const group = {
       one: ['AC', '+/-', '%', '/'],
       two: ['7', '8', '9', 'X'],
       three: ['4', '5', '6', '-'],
       four: ['1', '2', '3', '+'],
-      five: ['0', '.', '=']
-    }
+      five: ['0', '.', '='],
+    };
     return (
       <div className="board">
-        {
-          Object.keys(group).map(key => {
-            return group[key].map(btnName => {
-              return <Button btnName={btnName} />
-            })
-          })
-        }
-
+        {Object.keys(group).map((key) => {
+          return group[key].map((btnName) => {
+            return <Button key={btnName} btnName={btnName} />;
+          });
+        })}
       </div>
-    )
+    );
   }
 }
