@@ -13,10 +13,16 @@ export default class ButtonPanel extends React.Component {
       five: ['0', '.', '='],
     };
     return (
-      <div className="board">
+      <div className="calculator-board">
         {Object.keys(group).map((key) => {
           return group[key].map((btnName) => {
-            return <Button key={btnName} btnName={btnName} />;
+            return (
+              <Button
+                color={['#F5913E','#EOEOEO']}
+                wide={171}
+                key={btnName} btnName={btnName}
+                />
+            )
           });
         })}
       </div>
