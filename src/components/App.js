@@ -1,18 +1,17 @@
 import React from 'react';
-import logo from './calculator-96.png';
-import './App.css';
 
 import Display from './Display.jsx'
 import ButtonPanel from './ButtonPanel.jsx'
 
-class App extends React.Component() {
-  constructor(props) {
-    super(props);
-  }
+class App extends React.Component {
+    state = {
+      result: 0,
+    }
   render(){
+    const { result } = this.state;
       return (
         <div className="App">
-          <Display />
+          <Display result={ result.toString() }/>
           <ButtonPanel />
         </div>
       );
