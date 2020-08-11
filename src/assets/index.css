@@ -1,0 +1,21 @@
+#root {
+  display: flex;
+}
+
+.App {
+  background-color: red;
+  width: 700px;
+  margin: auto;
+}
+
+.result {
+  background-color:#858693;
+  height: 100px;
+  color: #ffff;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0  1rem;
+  font-size: 40px;
+}
