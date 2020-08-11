@@ -1,7 +1,8 @@
 import operate from './operate';
 
 export default function calculate(calcObj, btnName) {
-  let { total, next, operation } = calcObj;
+  let { total, next } = calcObj;
+  const { operation } = calcObj;
   if (btnName === '+/-') {
     total *= -1;
     next *= -1;

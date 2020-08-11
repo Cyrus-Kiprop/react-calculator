@@ -2,10 +2,9 @@ import Big from 'big.js';
 
 export default function operate(numberOne, numberTwo, operation) {
   let operationResult = Big(0);
-  let leftAssignment; let
-    rightAssigment;
-  leftAssignment = Big(numberOne);
-  rightAssigment = numberTwo ? rightAssigment = Big(numberTwo) : null;
+  const leftAssignment = Big(numberOne);
+  let rightAssigment;
+  rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : null;
 
   switch (operation) {
     case '+':
@@ -16,7 +15,7 @@ export default function operate(numberOne, numberTwo, operation) {
       break;
 
     case '%':
-      operationResult = (leftAssignment * 0.01);
+      operationResult = leftAssignment * 0.01;
       break;
     case 'X':
       operationResult = leftAssignment.times(rightAssigment);
