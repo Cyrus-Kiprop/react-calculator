@@ -11,14 +11,20 @@ const ButtonPanel = () => {
     four: ['1', '2', '3', '+'],
     five: ['0', '.', '='],
   };
+
+  const color = ['#F5913E', '#EOEOEO'];
+
+  const styleColor = (btnName) =>
+    ['/', 'X', '-', '+', '='].includes(btnName) ? color[0] : color[1];
+
   return (
     <div className="calculator-board">
       {Object.keys(group).map((key) => {
         return group[key].map((btnName) => {
           return (
             <Button
-              color={['#F5913E', '#EOEOEO']}
-              wide={171}
+              color={styleColor(btnName)}
+              wide={btnName === '0'}
               key={btnName}
               btnName={btnName}
             />
