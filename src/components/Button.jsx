@@ -7,27 +7,28 @@ const Button = ({ wide, btnName, clickHandler, color }) => {
     event.preventDefault();
     clickHandler(btnName);
   };
-  const widthSize = wide ? 345 : 170;
+  const widthSize = wide ? 175 * 2 : 175;
   return (
-    <div
-      onClick={handleClick}
+    <button
+      onClick={() => clickHandler(btnName)}
+      type="button"
       style={{ width: widthSize, backgroundColor: color }}
       className="calc-btn"
     >
       {btnName}
-    </div>
+    </button>
   );
 };
 
 Button.propTypes = {
-  wide: PropTypes.bool,
+  wide: PropTypes.bool.isRequired,
   color: PropTypes.string,
+  clickHandler: PropTypes.func.isRequired,
   btnName: PropTypes.string.isRequired,
 };
 
 Button.defaultProps = {
-  color: '#EFEFEF',
-  wide: false,
+  color: '#F5913E',
 };
 
 export default Button;

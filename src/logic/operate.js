@@ -17,14 +17,19 @@ export default function operate(numberOne, numberTwo, operation) {
     case '%':
       operationResult = leftAssignment * 0.01;
       break;
-    case 'X':
+    case 'x':
       operationResult = leftAssignment.times(rightAssigment);
       break;
     case '÷':
-      if (numberOne === 0 || numberTwo === 0) return 'cannot divide by zero';
-      operationResult = leftAssignment.div(rightAssigment);
+      try {
+        operationResult = leftAssignment.div(rightAssigment);
+      } catch (e) {
+        operationResult = null;
+      }
       break;
     default:
   }
-  return operationResult.toString();
+  return operationResult
+    ? operationResult.toString()
+    : 'Math Error: cannot divide a number by zero';
 }

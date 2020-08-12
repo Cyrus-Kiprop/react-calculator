@@ -14,9 +14,10 @@
   color: #ffff;
   font-weight: bolder;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0  1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 1rem;
   font-size: 40px;
 }
 
@@ -34,4 +35,8 @@
   justify-content: center;
   font-size: 22px;
   font-weight: bold;
+}
+
+.calc-btn:hover {
+  background-color: #cecece;
 }

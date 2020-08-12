@@ -6,16 +6,17 @@ import Button from './Button.jsx';
 
 const ButtonPanel = ({ clickHandler }) => {
   const group = {
-    one: ['AC', '+/-', '%', '/'],
-    two: ['7', '8', '9', 'X'],
+    one: ['AC', '+/-', '%', '÷'],
+    two: ['7', '8', '9', 'x'],
     three: ['4', '5', '6', '-'],
     four: ['1', '2', '3', '+'],
     five: ['0', '.', '='],
   };
+
   const color = ['#F5913E', '#EOEOEO'];
 
   const styleColor = (btnName) =>
-    ['/', 'X', '-', '+', '='].includes(btnName) ? color[0] : color[1];
+    ['÷', 'x', '-', '+', '='].includes(btnName) ? color[0] : color[1];
 
   return (
     <div className="calculator-board">
