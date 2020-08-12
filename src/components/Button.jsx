@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prefer-stateless-function
 const Button = ({ color, wide, btnName }) => {
-  const styleColor = ['/', 'X', '-', '+', '='].includes(btnName)
-    ? color[0]
-    : color[1];
-  const widthSize = btnName === '0' ? 345 : wide;
+  const widthSize = wide ? 175 * 2 : 175;
   return (
-    <div
-      style={{ width: widthSize, backgroundColor: styleColor }}
+    <button
+      type="button"
+      style={{ width: widthSize, backgroundColor: color }}
       className="calc-btn"
     >
       {btnName}
-    </div>
+    </button>
   );
 };
 
 Button.propTypes = {
-  wide: PropTypes.number.isRequired,
-  color: PropTypes.objectOf(PropTypes.object()).isRequired,
+  wide: PropTypes.bool.isRequired,
+  color: PropTypes.string,
   btnName: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+  color: '#F5913E',
 };
 
 export default Button;
