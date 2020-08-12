@@ -10,20 +10,28 @@ import ButtonPanel from './ButtonPanel.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state  = {
+    this.state = {
       total: null,
       next: null,
-      operation: null
-    }
+      operation: null,
+    };
   }
+
+  handleClick = buttonName => {
+    const newState = { ...this.state };
+    const { ...operationResult } = calculate(newState, buttonName);
+    this.setState(operationResult);
+  };
+
   render() {
-      return (
-        <div className="App">
-          <Display result="0" />
-          <ButtonPanel />
-        </div>
-      )
-    }
+    const { total, next } = this.state;
+    return (
+      <div className="App">
+        <Display result="0" total={total} next={next} />
+        <ButtonPanel clickHandler={this.handleClick} />
+      </div>
+    );
+  }
 }
 
 export default App;
