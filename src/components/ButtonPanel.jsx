@@ -28,7 +28,7 @@ const ButtonPanel = ({ clickHandler }) => {
               wide={btnName === '0'}
               key={btnName}
               btnName={btnName}
-              clickHandler={clickHandler}
+              handleClick={clickHandler}
             />
           );
         });
