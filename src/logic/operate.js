@@ -2,9 +2,11 @@ import Big from 'big.js';
 
 export default function operate(numberOne, numberTwo, operation) {
   let operationResult = Big(0);
+const regex = /^\-{1}$/g;
+if (regex.test(numberOne) || regex.test(numberTwo)) return
   const leftAssignment = Big(Number(numberOne));
   let rightAssigment;
-  rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : 1;
+  rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : null;
 
   switch (operation) {
     case '+':
