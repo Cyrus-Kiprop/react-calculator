@@ -7,7 +7,7 @@ const Display = ({ result, operation }) => {
   return (
   <div className="result">
     <span className="operand">{operation}</span>
-    <p value={result} style={{'font-size': fonts, 'word-wrap': 'break-word'}}>{result}</p>
+    <p value={result} style={{fontSize: fonts,wordWrap: 'break-word'}}>{result}</p>
   </div>
 )
 }
