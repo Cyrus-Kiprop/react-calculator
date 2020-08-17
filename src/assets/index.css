@@ -16,9 +16,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 1rem;
   font-size: 40px;
+  padding: .3em;
+}
+
+.result > p {
+  width: 100%;
+  word-wrap: break-word;
+  text-align: right;
+  overflow-y: auto;
 }
 
 .calculator-board {
