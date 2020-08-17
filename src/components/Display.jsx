@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Display = ({ result, operation }) => (
+const Display = ({ result, operation }) => {
+  const length = result.length
+  const fonts = length > 25 ? '0.5em' : '1em'
+  return (
   <div className="result">
     <span className="operand">{operation}</span>
-    <h1>{result}</h1>
+    <p value={result} style={{'font-size': fonts, 'word-wrap': 'break-word'}}>{result}</p>
   </div>
-);
+)
+}
 
 Display.propTypes = {
   result: PropTypes.string,
