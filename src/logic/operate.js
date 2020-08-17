@@ -2,9 +2,9 @@ import Big from 'big.js';
 
 export default function operate(numberOne, numberTwo, operation) {
   let operationResult = Big(0);
-  const leftAssignment = Big(numberOne);
+  const leftAssignment = Big(Number(numberOne));
   let rightAssigment;
-  rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : null;
+  rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : 1;
 
   switch (operation) {
     case '+':
@@ -31,5 +31,5 @@ export default function operate(numberOne, numberTwo, operation) {
   }
   return operationResult
     ? operationResult.toString()
-    : 'Math Error: cannot divide a number by zero';
+    : 'Undefined';
 }
