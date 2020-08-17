@@ -2,6 +2,7 @@ import operate from './operate';
 
 export default function calculate(calcObj, btnName) {
   const { total, next, operation } = calcObj;
+  console.log(operation)
 
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const operands = ['+', '-', '÷', 'x'];
@@ -47,15 +48,16 @@ export default function calculate(calcObj, btnName) {
   }
 
   if (btnName === '.') {
-    if (next && !next.includes('.')) {
+
+    if (!next) {
       return {
         total,
-        next: `${next}.`,
+        next: `0.`,
         operation,
       };
     }
 
-    if (!next) {
+    if (next && !next.includes('.')) {
       return {
         total,
         next: `${next}.`,
@@ -64,9 +66,52 @@ export default function calculate(calcObj, btnName) {
     }
   }
 
+if (btnName === '-' && !next && !total) {
+  return {
+    total: next,
+    next: btnName,
+    operation: null
+  }
+}
+
+if (btnName === '-' && !next && total) {
+  return {
+    total,
+    next: btnName,
+    operation
+  }
+}
+
+  if (operands.includes(btnName) && next && !total) {
+    return {
+      total: next,
+      next: null,
+      operation: btnName,
+    };
+  }
+
+if (operands.includes(btnName) && !next && total) {
+    return {
+      total,
+      next,
+      operation: btnName,
+    };
+  }
+
+
+
+
+if (operands.includes(btnName) && next && total) {
+    return {
+      total: operate(total, next, btnName),
+      next: null,
+      operation: btnName,
+    };
+  }
+
   if (btnName === '=' && next && total) {
     return {
-      total: operate(total, next, operation).toString(),
+      total: operate(total, next, operation),
       next: null,
       operation: null,
     };
@@ -83,34 +128,11 @@ export default function calculate(calcObj, btnName) {
   if (btnName === '%' && next && !total) {
     return {
       total: null,
-      next: operate(next, total, btnName).toString(),
+      next: operate(next, total, btnName),
       operation: null,
     };
   }
 
-  if (operands.includes(btnName) && next && !total) {
-    return {
-      total: next,
-      next: null,
-      operation: btnName,
-    };
-  }
-
-  if (operands.includes(btnName) && !next && total) {
-    return {
-      total,
-      next,
-      operation: btnName,
-    };
-  }
-
-  if (operands.includes(btnName) && next && total) {
-    return {
-      total: operate(total, next, btnName).toString(),
-      next: null,
-      operation: btnName,
-    };
-  }
 
   return {
     total,
