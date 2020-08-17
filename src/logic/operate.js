@@ -2,8 +2,8 @@ import Big from 'big.js';
 
 export default function operate(numberOne, numberTwo, operation) {
   let operationResult = Big(0);
-const regex = /^\-{1}$/g;
-if (regex.test(numberOne) || regex.test(numberTwo)) return
+  const regex = /^-{1}$/g;
+  if (regex.test(numberOne) || regex.test(numberTwo)) return;
   const leftAssignment = Big(Number(numberOne));
   let rightAssigment;
   rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : null;
@@ -31,7 +31,6 @@ if (regex.test(numberOne) || regex.test(numberTwo)) return
       break;
     default:
   }
-  return operationResult
-    ? operationResult.toString()
-    : 'Undefined';
+  // eslint-disable-next-line consistent-return
+  return operationResult ? operationResult.toString() : 'Undefined';
 }
