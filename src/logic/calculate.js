@@ -1,12 +1,7 @@
 import operate from './operate';
 
 export default function calculate(calcObj, btnName) {
-  let { total, next } = calcObj;
-  const { operation } = calcObj;
-  if (btnName === '+/-') {
-    total *= -1;
-    next *= -1;
-  }
+  const { total, next, operation } = calcObj;
 
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const operands = ['+', '-', '÷', 'x'];
@@ -18,24 +13,11 @@ export default function calculate(calcObj, btnName) {
       operation: null,
     };
   }
-  if (btnName === '+/-' && !next && total) {
+
+  if (btnName === '0' && !total && !next) {
     return {
-      total: (total * -1).toString(),
+      total,
       next,
-      operation,
-    };
-  }
-  if (btnName === '+/-' && next) {
-    return {
-      total,
-      next: (next * -1).toString(),
-      operation,
-    };
-  }
-  if (btnName === '.' && !next.includes('.') && next) {
-    return {
-      total,
-      next: `${next}.`,
       operation,
     };
   }
@@ -48,27 +30,53 @@ export default function calculate(calcObj, btnName) {
     };
   }
 
-  if (btnName === '=' && next && total) {
+  if (btnName === '+/-' && !next && total) {
     return {
-      total: operate(total, next, operation).toString(),
-      next: null,
-      operation: null,
-    };
-  }
-
-  if (btnName === '%' && next && total) {
-    return {
-      total: operate(total, next, btnName),
-      next: null,
+      total: (total * -1).toString(),
+      next,
       operation,
     };
   }
 
-  if (btnName === '%' && next && !total) {
+  if (btnName === '+/-' && next) {
     return {
-      total: null,
-      next: operate(next, total, btnName).toString(),
+      total,
+      next: (next * -1).toString(),
+      operation,
+    };
+  }
+
+  if (btnName === '.') {
+    if (!next) {
+      return {
+        total,
+        next: '0.',
+        operation,
+      };
+    }
+
+    if (next && !next.includes('.')) {
+      return {
+        total,
+        next: `${next}.`,
+        operation,
+      };
+    }
+  }
+
+  if (btnName === '-' && !next && !total) {
+    return {
+      total: next,
+      next: btnName,
       operation: null,
+    };
+  }
+
+  if (btnName === '-' && !next && total) {
+    return {
+      total,
+      next: btnName,
+      operation,
     };
   }
 
@@ -90,9 +98,33 @@ export default function calculate(calcObj, btnName) {
 
   if (operands.includes(btnName) && next && total) {
     return {
-      total: operate(total, next, btnName).toString(),
+      total: operate(total, next, btnName),
       next: null,
       operation: btnName,
+    };
+  }
+
+  if (btnName === '=' && next && total) {
+    return {
+      total: operate(total, next, operation),
+      next: null,
+      operation: null,
+    };
+  }
+
+  if (btnName === '%' && next && total) {
+    return {
+      total: operate(total, next, btnName),
+      next: null,
+      operation,
+    };
+  }
+
+  if (btnName === '%' && next && !total) {
+    return {
+      total: null,
+      next: operate(next, total, btnName),
+      operation: null,
     };
   }
 

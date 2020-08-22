@@ -2,7 +2,9 @@ import Big from 'big.js';
 
 export default function operate(numberOne, numberTwo, operation) {
   let operationResult = Big(0);
-  const leftAssignment = Big(numberOne);
+  const regex = /^-{1}$/g;
+  if (regex.test(numberOne) || regex.test(numberTwo)) return;
+  const leftAssignment = Big(Number(numberOne));
   let rightAssigment;
   rightAssigment = numberTwo ? (rightAssigment = Big(numberTwo)) : null;
 
@@ -17,14 +19,18 @@ export default function operate(numberOne, numberTwo, operation) {
     case '%':
       operationResult = leftAssignment * 0.01;
       break;
-    case 'X':
+    case 'x':
       operationResult = leftAssignment.times(rightAssigment);
       break;
     case '÷':
-      if (numberOne === 0 || numberTwo === 0) return 'cannot divide by zero';
-      operationResult = leftAssignment.div(rightAssigment);
+      try {
+        operationResult = leftAssignment.div(rightAssigment);
+      } catch (e) {
+        operationResult = null;
+      }
       break;
     default:
   }
-  return operationResult.toString();
+  // eslint-disable-next-line consistent-return
+  return operationResult ? operationResult.toString() : 'Undefined';
 }

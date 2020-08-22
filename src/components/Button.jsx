@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ color, wide, btnName }) => {
+// eslint-disable-next-line react/prefer-stateless-function
+const Button = ({ wide, btnName, handleClick, color }) => {
   const widthSize = wide ? 175 * 2 : 175;
   return (
     <button
+      onClick={() => handleClick(btnName)}
       type="button"
       style={{ width: widthSize, backgroundColor: color }}
       className="calc-btn"
@@ -17,6 +19,7 @@ const Button = ({ color, wide, btnName }) => {
 Button.propTypes = {
   wide: PropTypes.bool.isRequired,
   color: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
   btnName: PropTypes.string.isRequired,
 };
 
